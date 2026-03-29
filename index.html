@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sébastien Boé</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --dark: #0D0D0D;
+    --light: #EADDCA;
+    --accent: #8B6F4E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cormorant Garamond', serif;
+    scroll-behavior: smooth;
+}
+
+body { background: var(--dark); }
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(13,13,13,0.95);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(234,221,202,0.1);
+}
+
+nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+nav a:hover { opacity: 1; }
+
+section {
+    padding: 100px 8%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dark { background: var(--dark); color: var(--light); }
+.light { background: var(--light); color: var(--dark); }
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.hero h1 { font-size: 60px; letter-spacing: 0.1em; }
+.hero p { margin-top: 15px; font-size: 22px; font-style: italic; opacity: 0.8; }
+
+.cta {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--light);
+    color: var(--light);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cta:hover {
+    background: var(--light);
+    color: var(--dark);
+}
+
+.cta.secondary {
+    margin-left: 10px;
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.cta.secondary:hover {
+    background: var(--accent);
+    color: var(--light);
+}
+
+.split {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.split img {
+    width: 100%;
+    max-width: 440px;
+    object-fit: cover;
+    filter: grayscale(20%);
+}
+
+.split > div {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+h2 {
+    font-size: 38px;
+    margin-bottom: 24px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+
+p { font-size: 18px; line-height: 1.75; }
+
+.contact {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact img {
+    width: 100%;
+    max-width: 440px;
+    object-fit: cover;
+    filter: grayscale(20%);
+}
+
+.contact > div {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--light);
+    opacity: 0.5;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    border-top: 1px solid rgba(234,221,202,0.1);
+}
+
+footer a {
+    color: var(--light);
+    text-decoration: underline;
+}
+
+@media(max-width: 768px){
+    .split, .contact {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero h1 { font-size: 38px; }
+    p { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#about">À propos</a>
+    <a href="#domaines">Domaines</a>
+    <a href="#vices">Vices de procédure</a>
+    <a href="#avis">Avis</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero dark">
+    <div>
+        <h1>SÉBASTIEN BOÉ</h1>
+        <p>Avocat en droit pénal — Défense à chaque étape</p>
+        <a href="https://wa.me/33626882778" class="cta">WhatsApp</a>
+        <a href="mailto:sboe.avocat@gmail.com" class="cta secondary">Email</a>
+    </div>
+</section>
+
+<section id="contact" class="light">
+    <div class="contact">
+        <div>
+            <h2>Contact</h2>
+            <p><strong>Téléphone :</strong> +33 6 26 88 27 78</p>
+            <p><strong>Email :</strong> sboe.avocat@gmail.com</p>
+            <p><strong>Adresse :</strong> 58 rue de Courcelles, 75008 Paris, France</p>
+            <a href="https://wa.me/33626882778" class="cta" style="margin-top: 10px; color: var(--dark); border-color: var(--dark);">WhatsApp</a>
+            <a href="mailto:sboe.avocat@gmail.com" class="cta secondary" style="margin-top: 10px;">Envoyer un email</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
