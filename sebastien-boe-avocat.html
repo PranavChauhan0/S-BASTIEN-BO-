@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avocat Pénaliste — Sébastien Boé</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --dark: #0D0D0D;
+    --light: #EADDCA;
+    --accent: #8B6F4E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cormorant Garamond', serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--dark);
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(13,13,13,0.95);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(234,221,202,0.1);
+}
+
+nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 8%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dark { background: var(--dark); color: var(--light); }
+.light { background: var(--light); color: var(--dark); }
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.hero h1 { font-size: 60px; letter-spacing: 0.1em; }
+.hero p { margin-top: 15px; font-size: 22px; font-style: italic; opacity: 0.8; }
+
+.cta {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--light);
+    color: var(--light);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cta:hover {
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* SPLIT */
+.split {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.split img {
+    width: 100%;
+    max-width: 440px;
+    object-fit: cover;
+    filter: grayscale(20%);
+}
+
+.split > div {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* TEXT */
+h2 {
+    font-size: 38px;
+    margin-bottom: 24px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.card {
+    border: 1px solid rgba(234,221,202,0.4);
+    padding: 22px 20px;
+    font-size: 17px;
+    transition: 0.3s;
+    letter-spacing: 0.02em;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--light);
+    background: rgba(234,221,202,0.05);
+}
+
+/* VICES SECTION */
+#vices {
+    background: var(--light);
+    color: var(--dark);
+}
+
+#vices h2 {
+    color: var(--dark);
+}
+
+.vices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 10px;
+}
+
+.vice-card {
+    border: 1px solid rgba(13,13,13,0.25);
+    padding: 24px;
+    font-size: 17px;
+    line-height: 1.7;
+    transition: 0.3s;
+}
+
+.vice-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--dark);
+    background: rgba(13,13,13,0.04);
+}
+
+.vice-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+}
+
+/* REVIEWS – light section */
+.reviews-light .review-box {
+    border: 1px solid rgba(13,13,13,0.25);
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.reviews-light .review-box:hover {
+    border-color: var(--dark);
+    background: rgba(13,13,13,0.04);
+}
+
+.reviews-light .review-box strong {
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    opacity: 0.7;
+}
+
+.reviews-light .review-box p {
+    margin-top: 10px;
+    color: var(--dark);
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+/* REVIEWS – dark section */
+.reviews-dark .review-box {
+    border: 1px solid rgba(234,221,202,0.25);
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.reviews-dark .review-box:hover {
+    border-color: var(--light);
+    background: rgba(234,221,202,0.04);
+}
+
+.reviews-dark .review-box strong {
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    color: var(--light);
+    opacity: 0.7;
+}
+
+.reviews-dark .review-box p {
+    margin-top: 10px;
+    color: var(--light);
+    opacity: 0.88;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+/* CONTACT */
+.contact {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact img {
+    width: 100%;
+    max-width: 440px;
+    object-fit: cover;
+    filter: grayscale(20%);
+}
+
+.contact > div {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--light);
+    opacity: 0.5;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    border-top: 1px solid rgba(234,221,202,0.1);
+}
+
+footer a {
+    color: var(--light);
+    text-decoration: underline;
+}
+
+/* MOBILE */
+@media(max-width: 768px){
+    .split, .contact {
+        flex-direction: column;
+        text-align: center;
+    }
+    .split img, .contact img {
+        max-width: 100%;
+    }
+    .hero h1 { font-size: 38px; }
+    p { font-size: 16px; }
+    nav { gap: 16px; flex-wrap: wrap; }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#about">À propos</a>
+    <a href="#domaines">Domaines</a>
+    <a href="#vices">Vices de procédure</a>
+    <a href="#avis">Avis</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO (DARK) -->
+<section class="hero dark">
+    <div>
+        <h1>SÉBASTIEN BOÉ</h1>
+        <p>Avocat en droit pénal — Défense à chaque étape</p>
+        <a href="https://wa.me/33626882778" class="cta">Contactez via WhatsApp</a>
+    </div>
+</section>
+
+<!-- ABOUT (LIGHT) -->
+<section id="about" class="light">
+    <div class="split">
+        <img src="2024-11-08.jpg" alt="Maître Sébastien Boé, avocat pénaliste">
+        <div>
+            <h2>À propos</h2>
+            <p>
+                Le cabinet intervient en droit pénal à tous les stades de la procédure : garde à vue, enquête préliminaire, instruction judiciaire, comparution immédiate et audiences pénales.
+            </p>
+            <p>
+                Chaque dossier est traité personnellement avec une réactivité immédiate, une disponibilité constante et une implication totale. Cette approche garantit une défense structurée, cohérente et efficace.
+            </p>
+            <p>
+                Le cabinet accompagne également dans les procédures complexes : mise en examen, détention, appels, mandats d'arrêt européens, extraditions et aménagements de peine, avec une analyse rigoureuse de chaque situation.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- DOMAINES (DARK) -->
+<section id="domaines" class="dark">
+    <h2>Domaines d'intervention</h2>
+    <div class="grid">
+        <div class="card">Garde à vue</div>
+        <div class="card">Défense pénale</div>
+        <div class="card">Enquête préliminaire</div>
+        <div class="card">Instruction judiciaire</div>
+        <div class="card">Mise en examen</div>
+        <div class="card">Comparution immédiate</div>
+        <div class="card">Tribunal correctionnel</div>
+        <div class="card">Détention provisoire</div>
+        <div class="card">Appels</div>
+        <div class="card">Mandat d'arrêt européen</div>
+        <div class="card">Extradition</div>
+        <div class="card">Aménagement de peine</div>
+    </div>
+</section>
+
+<!-- VICES DE PROCÉDURE (LIGHT) — was missing, now added -->
+<section id="vices" class="light">
+    <h2>Vices de procédure</h2>
+    <p style="margin-bottom: 32px; max-width: 700px;">
+        La régularité de la procédure pénale est un droit fondamental. Le cabinet analyse chaque acte de la procédure afin de détecter toute irrégularité susceptible d'entraîner l'annulation de pièces ou de preuves.
+    </p>
+    <div class="vices-grid">
+        <div class="vice-card">
+            <h3>Nullités de procédure</h3>
+            <p>Examen rigoureux des actes d'enquête, des procès-verbaux et des auditions pour identifier toute irrégularité formelle.</p>
+        </div>
+        <div class="vice-card">
+            <h3>Droits en garde à vue</h3>
+            <p>Vérification du respect scrupuleux des droits lors de la garde à vue : notification, accès à un avocat, délais légaux.</p>
+        </div>
+        <div class="vice-card">
+            <h3>Perquisitions irrégulières</h3>
+            <p>Contrôle de la légalité des perquisitions et saisies, des conditions d'exécution et des autorisations requises.</p>
+        </div>
+        <div class="vice-card">
+            <h3>Écoutes et surveillance</h3>
+            <p>Analyse des interceptions téléphoniques, géolocalisations et IMSI-catchers au regard des exigences légales et conventionnelles.</p>
+        </div>
+    </div>
+</section>
+
+<!-- AVIS CLIENTS (DARK) -->
+<section id="avis" class="dark reviews-dark">
+    <h2>Avis clients</h2>
+
+    <div class="review-box">
+        <strong>Nathalie Pelletier – Il y a 3 semaines</strong>
+        <p>
+            C'est un super avocat. Moi, j'appelle ça un truc de ouf, d'une gentillesse, d'une bienveillance, d'un professionnalisme, je vous le recommande. C'est le meilleur avocat que j'ai pu rencontrer. Il a défendu mon petit frère Stéphane. C'est un avocat qui travaille avec ses tripes — merci beaucoup, Monsieur Boé, vraiment.
+        </p>
+    </div>
+
+    <div class="review-box">
+        <strong>S.L – Il y a 1 mois</strong>
+        <p>
+            Maître Sébastien Boé est non seulement d'un grand professionnalisme mais aussi d'une profonde humanité. Je lui suis très reconnaissante pour le temps qu'il m'a accordé.
+        </p>
+    </div>
+
+    <div class="review-box">
+        <strong>Manon – Il y a 4 mois</strong>
+        <p>
+            Un grand merci à Monsieur Boé pour son aide. Je l'ai appelé en urgence un samedi après-midi pour un jugement le lundi après-midi. Il explique bien et prend le temps de rassurer. Il a réussi à se battre pour mon copain, qui aujourd'hui est avec moi à la maison.
+        </p>
+    </div>
+
+    <div class="review-box">
+        <strong>Stéphanie Nol – Il y a 4 mois</strong>
+        <p>
+            Merci à lui de m'avoir accompagnée, soutenue tout au long de l'attente de mon jugement. J'étais considérée comme accusée — je me suis sentie assez à l'aise pour me confier et il s'est battu jusqu'au bout malgré les difficultés de la procédure. Grâce à ses conseils, son écoute, j'ai pu faire face et me reposer sur son expérience et son talent d'avocat. Merci infiniment, Maître, vous êtes incroyable.
+        </p>
+    </div>
+
+    <div class="review-box">
+        <strong>Nis Bel – Il y a 5 mois</strong>
+        <p>
+            Un immense merci à Maître Sébastien Boé pour son professionnalisme, sa réactivité et sa stratégie exceptionnelle. Malgré une situation très compliquée, il a su obtenir un renvoi qui semblait impossible, avec sang-froid, intelligence et bienveillance. C'est un avocat humain, à l'écoute et d'une grande maîtrise. Je le recommande sincèrement à toute personne cherchant un véritable défenseur, compétent et engagé. Encore merci, Maître, pour votre soutien et votre dévouement.
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT (LIGHT) -->
+<section id="contact" class="light">
+    <div class="contact">
+        <div>
+            <h2>Contact</h2>
+            <p><strong>Téléphone :</strong> +33 6 26 88 27 78</p>
+            <p><strong>Adresse :</strong> 58 rue de Courcelles, 75008 Paris, France</p>
+            <a href="https://wa.me/33626882778" class="cta" style="margin-top: 10px; color: var(--dark); border-color: var(--dark);">Contactez via WhatsApp</a>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.0071732251263!2d2.3072578!3d48.877139799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f98d6ddce41%3A0xbc3b3d1a70ed428c!2zU8OpYmFzdGllbiBCb8Op!5e0!3m2!1sen!2sin!4v1774807280044!5m2!1sen!2sin" width="100%" height="400" style="border:0; max-width:440px; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+<footer>
+    Créé par Pranav Chauhan —
+    <a href="https://www.linkedin.com/in/pranav-chauhan-085499335">LinkedIn</a>
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section:not(.hero)");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.1 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
